@@ -22,6 +22,12 @@
        :onyx/doc "Reads segments from a core.async channel"}
 
       ;; <<< BEGIN FILL ME IN >>>
+      {:onyx/name :identity
+       :onyx/fn :workshop.challenge-2-3/id
+       :onyx/type :function
+       :onyx/batch-size batch-size
+       :onyx/batch-timeout batch-timeout
+       :onyx/doc "identity"}
 
       ;; <<< END FILL ME IN >>>
 
@@ -35,6 +41,9 @@
        :onyx/doc "Writes segments to a core.async channel"}]))
 
 ;;; Functions ;;;
+
+(defn id [segment]
+  (identity segment))
 
 ;;; Lifecycles ;;;
 
