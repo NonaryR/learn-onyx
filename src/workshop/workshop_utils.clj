@@ -109,8 +109,8 @@
               (assoc acc
                      (:onyx/name item)
                      (get-channel (:core.async/id item)
-                                  (:core.async/size item)))) 
-            {} 
+                                  (:core.async/size item))))
+            {}
             (filter :core.async/id lifecycle-catalog-join))))
 
 (defn channel-id-for [lifecycles task-name]

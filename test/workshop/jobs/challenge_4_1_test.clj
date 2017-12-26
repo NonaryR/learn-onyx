@@ -50,6 +50,6 @@
                 (let [[results] (u/collect-outputs! lifecycles [:write-segments])]
                   (u/segments-equal? expected-output results)))))
           results (clojure.string/split output #"\n")]
-      (is (clojure.set/subset? 
+      (is (clojure.set/subset?
            (into #{} (map (fn [n] (str {:n n})) (range 10)))
            (into #{}  results))))))
