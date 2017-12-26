@@ -22,6 +22,13 @@
        :onyx/doc "Reads segments from a core.async channel"}
 
       ;; <<< BEGIN FILL ME IN >>>
+      {:onyx/name :identity
+       :onyx/fn :clojure.core/identity
+       :onyx/type :function
+       :onyx/batch-size batch-size
+       :onyx/batch-timeout batch-timeout
+       :onyx/max-peers 4
+       :onyx/doc "identity"}
 
       ;; <<< END FILL ME IN >>>
 
@@ -33,6 +40,9 @@
        :onyx/batch-timeout batch-timeout
        :onyx/max-peers 1
        :onyx/doc "Writes segments to a core.async channel"}]))
+
+(defn id [segment]
+  (identity segment))
 
 ;;; Lifecycles ;;;
 

@@ -52,16 +52,16 @@
 ;;
 ;; There are 5 lifecycle points that can be leveraged:
 ;;
-;; - :lifecycle/start-task? 
+;; - :lifecycle/start-task?
 ;; - :lifecycle/before-task-start
 ;; - :lifecycle/after-task-stop
 ;; - :lifecycle/before-batch
 ;; - :lifecycle/after-batch
-;; 
+;;
 ;; All lifecycle functions except :start-task? *must* return maps.
 ;; These maps are merged back into the main event map, and the
 ;; returned map's keys get priority over any pre-existing keys.
-;; 
+;;
 ;; :start-task? should return a boolean value. If this value returns
 ;; false, the task backs off for a predetermined amount of time
 ;; and calls this function again until it returns true. This is useful
