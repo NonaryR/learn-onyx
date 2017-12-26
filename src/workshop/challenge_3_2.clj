@@ -40,15 +40,8 @@
 
 ;;; Functions ;;;
 
-;; <<< BEGIN FILL ME IN >>>
-
-(defn split-sentence [segment]
-  (->> (-> (:sentence segment)
-           (str/split #" "))
-       (map #(partial {:word %}))
-       (reduce conj #{})))
-
-;; <<< END FILL ME IN >>>
+(defn split-sentence [{:keys [sentence]}]
+  (mapv #(assoc {} :word %) (str/split sentence #" ")))
 
 ;;; Lifecycles ;;;
 
