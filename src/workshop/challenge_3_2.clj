@@ -1,6 +1,5 @@
 (ns workshop.challenge-3-2
-  (:require [workshop.workshop-utils :as u]
-            [clojure.string :as str]))
+  (:require [workshop.workshop-utils :as u]))
 
 ;;; Workflows ;;;
 
@@ -40,8 +39,13 @@
 
 ;;; Functions ;;;
 
-(defn split-sentence [{:keys [sentence]}]
-  (mapv #(assoc {} :word %) (str/split sentence #" ")))
+;; <<< BEGIN FILL ME IN >>>
+
+(defn split-sentence [segment]
+  (->> (clojure.string/split (:sentence segment) #" ")
+       (mapv #(assoc {} :word %))))
+
+;; <<< END FILL ME IN >>>
 
 ;;; Lifecycles ;;;
 

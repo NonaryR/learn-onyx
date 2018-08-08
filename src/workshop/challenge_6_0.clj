@@ -37,7 +37,7 @@
       ;; There are a few special keys we need to set
       ;; since this is a windowed task, and also a function
       ;; acting as an output that discards data.
-      
+
       {:onyx/name :bucket-page-views
        ;; :onyx.peer.function/function is a value for plugins
        ;; which are functions in the leaf position of a workflow.
@@ -60,7 +60,7 @@
        :onyx/batch-size batch-size
        :onyx/batch-timeout batch-timeout
        :onyx/doc "Identity function, used for windowing segments unchanged."}
-      
+
       ;; <<< END READ ME PART 2 >>>
       ]))
 
@@ -161,10 +161,11 @@
 ;;
 ;; While we use an atom here for ease, this is the ideal place to synchronize
 ;; window state to an external database or other 3rd party medium.
-(defn deliver-promise! [event window  {:keys [trigger/window-id] :as trigger} {:keys [lower-bound upper-bound] :as state-event} state]
+(defn deliver-promise! [event window {:keys [trigger/window-id] :as trigger}
+                        {:keys [lower-bound upper-bound] :as state-event} state]
   (let [lower (java.util.Date. lower-bound)
         upper (java.util.Date. upper-bound)]
-    (println "Trigger for" window-id "window")    
+    (println "Trigger for" window-id "window")
     (swap! fired-window-state assoc [lower upper] (into #{} state))))
 
 ;; Finally, it's important to note that if a machine fails before

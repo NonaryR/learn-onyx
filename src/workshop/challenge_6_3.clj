@@ -8,7 +8,7 @@
 
 (defn watermark-fn [segment]
   ;;  <<< FILL ME IN >>>
-  )
+  (.getTime (:event-time segment)))
 
 ;;; Catalogs ;;;
 
@@ -24,7 +24,7 @@
        :onyx/batch-timeout batch-timeout
        :onyx/max-peers 1
        :onyx/doc "Reads segments from a core.async channel"}
-      
+
       {:onyx/name :bucket-page-views
        :onyx/plugin :onyx.peer.function/function
        :onyx/fn :clojure.core/identity
@@ -49,14 +49,25 @@
 ;; <<< BEGIN FILL ME IN PART 1 >>>
 ;; Use an :onyx.triggers/watermark trigger.
 (def windows
-  [])
+  [{:window/id :reduce-bytes
+    :window/task :bucket-page-views
+    :window/type :fixed
+    :window/aggregation :onyx.windowing.aggregation/conj
+    :window/window-key :event-time
+    :window/range [1 :hour]
+    :window/doc "Conj's segments in one hour fixed windows."}])
 
 ;; <<< END FILL ME IN PART 1 >>>
 
 ;; <<< BEGIN FILL ME IN PART 2 >>>
 
 (def triggers
-  [])
+  [{:trigger/window-id :reduce-bytes
+    :trigger/id :sync-collect
+    :trigger/on :onyx.triggers/watermark
+    :trigger/state-context [:window-state]
+    :trigger/sync ::deliver-promise!
+    :trigger/doc "Fires when this window's watermark has been exceeded"}])
 
 ;; <<< END FILL ME IN PART 2 >>>
 
@@ -64,6 +75,9 @@
 
 (defn deliver-promise! [event window trigger {:keys [window-id lower-bound upper-bound]} state]
   ;; <<< BEGIN FILL ME IN PART 3 >>>
-
+  (let [lower (java.util.Date. lower-bound)
+        upper (java.util.Date. upper-bound)]
+    (println "Trigger for" window-id "window")
+    (swap! fired-window-state assoc [lower upper] state))
   ;; <<< END FILL ME IN PART 3 >>>
   )

@@ -60,13 +60,12 @@
 ;;; Functions ;;;
 
 ;; <<< BEGIN FILL ME IN >>>
-(defn upper-case [{:keys [name]}]
-  {:name
-   (clojure.string/upper-case name)})
 
-(defn interpose-char [sep {:keys [name]}]
-  {:name (->> (interpose sep name)
-              (apply str))})
+(defn upper-case [segment]
+  (update segment :name #(clojure.string/upper-case %)))
+
+(defn interpose-char [sep segment]
+  (update segment :name #(apply str (interpose sep %))))
 
 ;; <<< END FILL ME IN >>>
 

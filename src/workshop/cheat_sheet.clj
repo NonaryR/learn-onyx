@@ -25,13 +25,13 @@
   :onyx/type :input
   :onyx/medium :plugin-medium
   ;; task will read up to batch-size segments at a time
-  :onyx/batch-size 20 
+  :onyx/batch-size 20
   ;; task will wait no longer than batch-timeout to read segments
-  :onyx/batch-timeout 1000 
+  :onyx/batch-timeout 1000
   ;; enable to restrict the number of peers working on this task
-  ; :onyx/max-peers 1 
+  ; :onyx/max-peers 1
   ;; enable to force a minimum number of peers onto this task
-  ; :onyx/min-peers 1 
+  ; :onyx/min-peers 1
   :onyx/doc "Documentation for this catalog entry"}
 
  ;; Function task
@@ -42,8 +42,8 @@
   ;; Add a parameter to your-fn from catalog entry e.g. (fn [v segment])
   ; :onyx/params [:some/key]
   ; :some/key 3
-  :onyx/batch-size 20 
-  :onyx/batch-timeout 1000 
+  :onyx/batch-size 20
+  :onyx/batch-timeout 1000
   :onyx/doc "Returns the segment"}
 
  ;; Group by Key task
@@ -52,8 +52,8 @@
   :onyx/type :function
   :onyx/group-by-key :name
   :onyx/min-peers 3
-  :onyx/batch-size 20 
-  :onyx/batch-timeout 1000 
+  :onyx/batch-size 20
+  :onyx/batch-timeout 1000
   :onyx/flux-policy :continue}
 
  ;; Group by Function task
@@ -63,7 +63,7 @@
   :onyx/group-by-fn :your-ns/your-grouping-function
   :onyx/min-peers 3
   :onyx/flux-policy :continue
-  :onyx/batch-size 20 
+  :onyx/batch-size 20
   :onyx/batch-timeout 1000}
 
  ;; Output task
@@ -71,7 +71,7 @@
   :onyx/plugin :path-to-plugin-builder/function
   :onyx/type :output
   :onyx/medium :plugin-medium
-  :onyx/batch-size 20 
+  :onyx/batch-size 20
   :onyx/batch-timeout 1000
   :onyx/doc "Output task doc"}]
 

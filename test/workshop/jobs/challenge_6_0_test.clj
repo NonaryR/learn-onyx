@@ -121,7 +121,7 @@
                    (let [n (swap! n-trigger-fires inc)]
                      (when (= n 3)
                        (deliver p true)))))
-      
+
       (u/bind-inputs! lifecycles {:read-segments input})
       (let [job {:workflow c/workflow
                  :catalog catalog

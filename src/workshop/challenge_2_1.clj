@@ -29,8 +29,7 @@
        :onyx/type :function
        :onyx/batch-size batch-size
        :onyx/batch-timeout batch-timeout
-       :onyx/doc "Умножаем на 3"}
-
+       :onyx/doc "* 3"}
 
       {:onyx/name :plus-fifty
        :onyx/fn :workshop.challenge-2-1/plus-fifty
@@ -38,6 +37,7 @@
        :onyx/batch-size batch-size
        :onyx/batch-timeout batch-timeout
        :onyx/doc "+ 50"}
+
       ;; <<< END FILL ME IN >>>
 
       {:onyx/name :write-segments

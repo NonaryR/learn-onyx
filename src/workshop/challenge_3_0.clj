@@ -55,7 +55,17 @@
 ;; as an argument, and return exactly one Clojure map to be
 ;; sent to the next tasks. This is the basic principle.
 ;; They can do a little more though, which we'll describe next.
-;;
+(defn alternate-case [segment]
+  (let [alternate (->> (map-indexed vector segment)
+                       (map #(if (odd? %1)
+                               %2
+                               (clojure.string/upper-case %2)))
+                       (apply str))]
+    (update segment :name alternate)))
+
+
+(defn exclaim [segment]
+  (update segment :name #(str % "!")))
 ;; Functions may also return a seq of segments, which will
 ;; cause all segments to be emitted to the next tasks.
 ;;

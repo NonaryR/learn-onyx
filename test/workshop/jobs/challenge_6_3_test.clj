@@ -78,9 +78,9 @@
                    ;; Triggers also fire on task completion, so technically
                    ;; the last segment we send through will be synced. We
                    ;; simply return the first value via the promise to avoid
-                   ;; a race condition of seeing the next state sync.                   
+                   ;; a race condition of seeing the next state sync.
                    (deliver p new)))
-      
+
       (u/bind-inputs! lifecycles {:read-segments input})
       (let [job {:workflow c/workflow
                  :catalog catalog

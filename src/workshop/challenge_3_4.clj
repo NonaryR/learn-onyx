@@ -22,12 +22,14 @@
        :onyx/max-peers 1
        :onyx/doc "Reads segments from a core.async channel"}
 
+      ;; <<< BEGIN FILL ME IN PART 1 >>>
       {:onyx/name :capitalize-names
        :onyx/fn :workshop.challenge-3-4/capitalize-names
        :onyx/type :function
        :onyx/batch-size batch-size
        :onyx/batch-timeout batch-timeout
-       :onyx/doc "Converts :name to all upper-case letters."}
+       :onyx/doc "Adds a bang to the end of :name"}
+      ;; <<< END FILL ME IN PART 1 >>>
 
       {:onyx/name :write-segments
        :onyx/plugin :onyx.plugin.core-async/output
@@ -40,9 +42,10 @@
 
 ;;; Functions ;;;
 
-(defn capitalize-names [{:keys [name]}]
-  {:name
-   (clojure.string/capitalize name)})
+;; <<< BEGIN FILL ME IN PART 2 >>>
+(defn capitalize-names [segment]
+  (update segment :name #(clojure.string/capitalize %)))
+;; <<< END FILL ME IN PART 2 >>>
 
 ;;; Lifecycles ;;;
 

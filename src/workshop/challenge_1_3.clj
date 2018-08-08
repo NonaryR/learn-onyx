@@ -6,23 +6,13 @@
 ;;; <<< BEGIN FILL ME IN >>>
 
 (def workflow
-  [[:A :D]
+  [[:A :D] [:B :D]
    [:D :F]
-   [:F :J]
-   [:F :K]
-
-   [:B :D]
+   [:F :J] [:F :K]
    [:D :G]
-
-   [:C :E]
-   [:E :G]
-   [:G :L]
-
-   [:E :H]
-   [:H :L]
-
-   [:E :I]
-   [:I :L]])
+   [:C :E] [:E :G] [:G :L]
+   [:E :H] [:H :L]
+   [:E :I] [:I :L]])
 
 ;;; <<< END FILL ME IN >>>
 

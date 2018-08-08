@@ -23,23 +23,24 @@
        :onyx/doc "Reads segments from a core.async channel"}
 
       ;; <<< BEGIN FILL ME IN >>>
+
       {:onyx/name :times
        :onyx/fn :workshop.challenge-2-2/times
+       :my/param1 3
+       :onyx/params [:my/param1]
        :onyx/type :function
        :onyx/batch-size batch-size
        :onyx/batch-timeout batch-timeout
-       :my/param 3
-       :onyx/params [:my/param]
-       :onyx/doc "*"}
+       :onyx/doc "* 3"}
 
       {:onyx/name :plus
        :onyx/fn :workshop.challenge-2-2/plus
+       :my/param2 50 ;; also :my/param enough like previos fn
+       :onyx/params [:my/param2]
        :onyx/type :function
        :onyx/batch-size batch-size
-       :my/param 50
-       :onyx/params [:my/param]
        :onyx/batch-timeout batch-timeout
-       :onyx/doc "+"}
+       :onyx/doc "+ 50"}
 
       ;; <<< END FILL ME IN >>>
 

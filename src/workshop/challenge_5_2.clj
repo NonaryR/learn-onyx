@@ -68,6 +68,10 @@
 
 ;; <<< BEGIN FILL ME IN >>>
 
-(def flow-conditions)
+(def flow-conditions
+  [{:flow/from :identity
+    :flow/to [:write-segments]
+    :flow/predicate [:or :workshop.challenge-5-1/admin? :workshop.challenge-5-1/user?]
+    :flow/doc "admins or users filter"}])
 
 ;; <<< END FILL ME IN >>>

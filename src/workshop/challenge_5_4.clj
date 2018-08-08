@@ -87,6 +87,25 @@
 
 ;; <<< BEGIN FILL ME IN >>>
 
-(def flow-conditions)
+(defn adults? [event old-segment new-segment all-new-segments]
+  (when (> (:age new-segment) 18)
+    new-segment))
+
+(defn child? [event old-segment new-segment all-new-segments]
+  (when (< (:age new-segment) 18)
+    new-segment))
+
+(def flow-conditions
+  [{:flow/from :identity
+    :flow/to [:adults]
+    :flow/exclude-keys [:age]
+    :flow/predicate :workshop.challenge-5-4/adults?
+    :flow/doc "adults filter"}
+
+   {:flow/from :identity
+    :flow/to [:children]
+    :flow/exclude-keys [:age]
+    :flow/predicate :workshop.challenge-5-4/child?
+    :flow/doc "child filter"}])
 
 ;; <<< END FILL ME IN >>>

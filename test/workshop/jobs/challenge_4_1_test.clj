@@ -52,4 +52,4 @@
           results (clojure.string/split output #"\n")]
       (is (clojure.set/subset?
            (into #{} (map (fn [n] (str {:n n})) (range 10)))
-           (into #{}  results))))))
+           (into #{} results))))))

@@ -22,8 +22,9 @@
        :onyx/doc "Reads segments from a core.async channel"}
 
       ;; <<< BEGIN FILL ME IN >>>
+
       {:onyx/name :identity
-       :onyx/fn :workshop.challenge-2-3/id
+       :onyx/fn :clojure.core/identity
        :onyx/type :function
        :onyx/batch-size batch-size
        :onyx/batch-timeout batch-timeout
@@ -42,8 +43,6 @@
 
 ;;; Functions ;;;
 
-(defn id [segment]
-  (identity segment))
 
 ;;; Lifecycles ;;;
 
@@ -61,6 +60,9 @@
                              (:onyx.core/id event)
                              segment)))))
   {})
+
+;; event
+#_(:onyx.core/outbox-ch :onyx.core/batch :onyx.core/log-prefix :onyx.core/workflow :assign-watermark-fn :onyx.core/job-config :onyx.core/output-plugin :onyx.core/task-kill-flag :onyx.core/id :onyx.core/write-batch :onyx.core/task-map :onyx.core/flow-conditions :onyx.core/storage :onyx.core/task-information :onyx.core/replica-atom :onyx.core/catalog :onyx.core/input-plugin :onyx.core/log :onyx.core/metadata :grouping-fn :onyx.core/group-ch :onyx.core/lifecycle-id :onyx.core/monitoring :onyx.core/job-name :onyx.core/fn :onyx.core/resume-point :onyx.core/tenancy-id :onyx.core/transformed :onyx.core/peer-opts :onyx.core/job-id :onyx.core/triggered :onyx.core/windows :onyx.core/task :compiled-non-ex-routes :compiled-norm-fcs :onyx.core/slot-id :onyx.core/task-id :onyx.core/since-barrier-count :onyx.core/lifecycles :onyx.core/params :egress-tasks :compiled-ex-fcs :onyx.core/serialized-task :onyx.core/kill-flag :onyx.core/triggers)
 
 (def writer-lifecycle
   {:lifecycle/before-task-start inject-writer-ch})
